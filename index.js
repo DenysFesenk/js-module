@@ -106,14 +106,14 @@ firstOne.addEventListener('click', () => {
 
     if( age < 12) {
         alert('Вы еще ребенок👶');
-    } else if ( age => 12 || age < 18) {
+    } else if (age < 18) {
         alert('Вы все еще подросток 👦');
-    } else if ( age => 18 || age < 60) {
+    } else if (age < 60) {
         alert('Поздравляю, вы уже взрослый 👱‍♂️');
-    } else if( age => 60 || age <= 100) {
+    } else if(age <= 100) {
         alert('Вы уже пенсионер 👴 еще чуть чуть ...');
     } else {
         alert('Странно, вы все еще живы🤔');
     }
-    console.log(age);
+    console.log(TypeOf.age);
 });

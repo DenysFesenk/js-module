@@ -117,124 +117,79 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"index.js":[function(require,module,exports) {
-// 1.Запросите у пользователя его имя и выведите в ответ: «Привет, его имя!».
-var firstBtn = document.getElementById('first'); //достаю кнопку из html файла 
+})({"../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+var bundleURL = null;
 
-firstBtn.addEventListener('click', function () {
-  // при нажатии на клик выполняется действие 
-  var name = prompt('Как вас зовут ?'); // запрашиваю имя
+function getBundleURLCached() {
+  if (!bundleURL) {
+    bundleURL = getBundleURL();
+  }
 
-  alert("\u041F\u0440\u0438\u0432\u0435\u0442, ".concat(name, "!")); // Выдаю имя 
-}); // 2.Запросите у пользователя длину стороны квадрата и выведите периметр такого квадрата.
+  return bundleURL;
+}
 
-var secondBtn = document.getElementById('second');
-secondBtn.addEventListener('click', function () {
-  var sizeOfSquare = prompt('Введите длину стороны квадрата.', 20);
-  var sumSquare = 4 * sizeOfSquare;
-  alert(sumSquare);
-}); // 3.Запросите у пользователя год его рождения, посчитайте, сколько ему лет и выведите результат. Текущий год укажите в коде как константу.
+function getBundleURL() {
+  // Attempt to find the URL of the current script and use that as the base URL
+  try {
+    throw new Error();
+  } catch (err) {
+    var matches = ('' + err.stack).match(/(https?|file|ftp|chrome-extension|moz-extension):\/\/[^)\n]+/g);
 
-var thirdBtn = document.getElementById('third');
-thirdBtn.addEventListener('click', function () {
-  var yearYourBirthday = prompt('В каком году вы родились ?', 1900);
-  var today = new Date();
-  var yourAge = today.getFullYear() - yearYourBirthday;
-  alert("\u0412\u0430\u043C ".concat(yourAge, " \u043B\u0435\u0442!"));
-}); // 4.Запросите у пользователя радиус окружности и выведите площадь такой окружности.
+    if (matches) {
+      return getBaseURL(matches[0]);
+    }
+  }
 
-var fourthBtn = document.getElementById('fourth');
-fourthBtn.addEventListener('click', function () {
-  var r = prompt('Задайте радиус окружности?', 30);
-  var p = 3.1415926535;
-  var areaOfCircle = p * Math.pow(r, 2);
-  areaOfCircle = Math.floor(areaOfCircle);
-  alert("\u041F\u043B\u043E\u0449\u0430\u0434\u044C \u043E\u043A\u0440\u0443\u0436\u043D\u043E\u0441\u0442\u0438 ".concat(areaOfCircle, "!"));
-}); // 5.Запросите у пользователя расстояние в км между двумя городами и за сколько часов он хочет добраться. Посчитайте скорость, с которой необходимо двигаться, чтобы успеть вовремя.
+  return '/';
+}
 
-var fifthBtn = document.getElementById('fifth');
-fifthBtn.addEventListener('click', function () {
-  var distance = prompt('Какая дистанция между точкой А и Б?', 340);
-  var timeToMove = prompt('За сколько времени вы планируете добраться ?', 6);
-  var speed = distance / timeToMove;
-  speed = Math.floor(speed);
-  alert("\u0412\u0430\u043C \u043D\u0443\u0436\u043D\u043E \u0434\u0432\u0438\u0433\u0430\u0442\u044C\u0441\u044F \u0441\u043E \u0441\u043A\u043E\u0440\u043E\u0441\u0442\u044C ".concat(speed, "\u043A\u043C/\u0447"));
-}); // 6.Реализуйте конвертор валют. Пользователь вводит доллары, программа переводит в евро. Курс валюты храните в константе.
+function getBaseURL(url) {
+  return ('' + url).replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)\/[^/]+$/, '$1') + '/';
+}
 
-var sixthBtn = document.getElementById('sixth');
-sixthBtn.addEventListener('click', function () {
-  var USD = prompt("\u041A\u0430\u043A\u0443\u044E \u0441\u0443\u043C\u043C\u0443 \u0434\u043E\u043B\u043B\u043E\u0440\u043E\u0432 \u0432\u044B \u0436\u0435\u043B\u0430\u0435\u0442\u0435 \u043F\u043E\u043C\u0435\u043D\u044F\u0442\u044C ?", 1000);
-  var EUR = 0.85;
-  var sumMoney = USD * EUR;
-  alert("\u041C\u0435\u043D\u044F\u044F ".concat(USD, " \u0434\u043E\u043B\u043B\u0430\u0440\u043E\u0432, \u0443 \u0432\u0430\u0441 \u043F\u043E\u043B\u0443\u0447\u0430\u0435\u0442\u0441\u044F ").concat(sumMoney, " \u0435\u0432\u0440\u043E!"));
-}); // 7.Пользователь указывает объем флешки в Гб. Программа должна посчитать, сколько файлов размером в 820 Мб помещается на флешку.
+exports.getBundleURL = getBundleURLCached;
+exports.getBaseURL = getBaseURL;
+},{}],"../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
+var bundle = require('./bundle-url');
 
-var seventhBtn = document.getElementById('seventh');
-seventhBtn.addEventListener('click', function () {
-  var memory = prompt('Какой у вас обьем флешки в ГБ?', 16);
-  var files = memory * 1000 / 820;
-  files = Math.floor(files);
-  var residue = memory * 1000 % 820;
-  alert("\u041D\u0430 \u0432\u0430\u0448\u0443 \u0444\u043B\u0435\u0448\u043A\u0443 \u0441 \u043E\u0431\u044C\u0435\u043C\u043E\u043C ".concat(memory, ", \u0432\u044B \u0441\u043C\u043E\u0436\u0435\u0442\u0435 \u0437\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u044C ").concat(files, " \u0444\u0430\u0439\u043B\u043E\u0432 \u043F\u043E 820\u043C\u0431. \u0410 \u0435\u0449\u0435 \u0443 \u0432\u0430\u0441 \u043E\u0441\u0442\u0430\u043D\u0435\u0442\u0441\u044F ").concat(residue, "\u043C\u0431\uD83D\uDE0A"));
-}); // 8.Пользователь вводит сумму денег в кошельке и цену одной шоколадки. Программа выводит, сколько шоколадок может купить пользователь, и сколько сдачи у него останется.
+function updateLink(link) {
+  var newLink = link.cloneNode();
 
-var eighthBtn = document.getElementById('eighth');
-eighthBtn.addEventListener('click', function () {
-  var amountOfMoney = prompt('Сколько у вас есть денег ?', 200);
-  var chokolate = prompt('Цена одной шоколадки?', 28.5);
-  var pieces = amountOfMoney / chokolate;
-  pieces = Math.floor(pieces);
-  var surrender = amountOfMoney % chokolate;
-  var currency = 'гривен';
-  alert("\u041D\u0430 ".concat(amountOfMoney, "\u0433\u0440\u0438\u0432\u0435\u043D \u0432\u044B \u043C\u043E\u0436\u0435\u0442\u0435 \u043A\u0443\u043F\u0438\u0442\u044C ").concat(pieces, " \u0448\u043E\u043A\u043E\u043B\u0430\u0434\u043E\u043A. \u0418 \u0443 \u0432\u0430\u0441 \u043E\u0441\u0442\u0430\u043D\u0435\u0442\u0441\u044F ").concat(surrender, " ").concat(currency, "!"));
-}); // 9.Запросите у пользователя трехзначное число и выведите его задом наперед. Для решения задачи вам понадобится оператор % (остаток от деления).
+  newLink.onload = function () {
+    link.remove();
+  };
 
-var ninthBtn = document.getElementById('ninth');
-ninthBtn.addEventListener('click', function () {
-  var num = prompt('Введите любое число! Желательно трехзначное!', 598);
+  newLink.href = link.href.split('?')[0] + '?' + Date.now();
+  link.parentNode.insertBefore(newLink, link.nextSibling);
+}
 
-  function getReversedNum(num) {
-    var result = 0;
+var cssTimeout = null;
 
-    while (num) {
-      result = result * 10 + num % 10;
-      num = Math.floor(num / 10);
+function reloadCSS() {
+  if (cssTimeout) {
+    return;
+  }
+
+  cssTimeout = setTimeout(function () {
+    var links = document.querySelectorAll('link[rel="stylesheet"]');
+
+    for (var i = 0; i < links.length; i++) {
+      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
+        updateLink(links[i]);
+      }
     }
 
-    return result;
-  }
+    cssTimeout = null;
+  }, 50);
+}
 
-  alert(getReversedNum(num));
-}); // 10.Пользователь вводит сумму вклада в банк на 2 месяца, с процентной ставкой депозита 5% годовых. Вывести сумму начисленных процентов.
+module.exports = reloadCSS;
+},{"./bundle-url":"../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"styles/style.scss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
 
-var tenthBtn = document.getElementById('tenth');
-tenthBtn.addEventListener('click', function () {
-  var num = prompt('Введите сумму вклада!');
-  var months = prompt('На сколько месяцев вы хотите внести сумму ?');
-  var sum = num * 0.05 / 12 * months;
-  sum = Math.floor(sum);
-  alert("\u0417\u0430 ".concat(months, " \u043C\u0435\u0441\u044F\u0446\u0430, \u0432\u0430\u043C \u0431\u0443\u0434\u0435\u0442 \u043D\u0430\u0447\u0438\u0441\u043B\u0435\u043D\u043D\u043E ").concat(sum, " \u0433\u0440\u0438\u0432\u043D\u0443."));
-}); //1.1 Запросить у пользователя его возраст и определить, кем он является: ребенком (0–2), подростком (12–18), взрослым (18_60) или пенсионером (60– ...).
-
-var firstOne = document.getElementById('firstOne');
-firstOne.addEventListener('click', function () {
-  var age = +prompt('Сколько вам лет?');
-
-  if (age < 12) {
-    alert('Вы еще ребенок👶');
-  } else if (age < 18) {
-    alert('Вы все еще подросток 👦');
-  } else if (age < 60) {
-    alert('Поздравляю, вы уже взрослый 👱‍♂️');
-  } else if (age <= 100) {
-    alert('Вы уже пенсионер 👴 еще чуть чуть ...');
-  } else {
-    alert('Странно, вы все еще живы🤔');
-  }
-
-  console.log(TypeOf.age);
-});
-},{}],"../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -438,5 +393,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","index.js"], null)
-//# sourceMappingURL=/js-modules.e31bb0bc.js.map
+},{}]},{},["../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/hmr-runtime.js"], null)
+//# sourceMappingURL=/style.ff1c4cab.js.map

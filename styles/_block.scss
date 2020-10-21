@@ -1,11 +1,12 @@
 $style: 'block';
 .#{$style}{
-    padding: 20px 100px;
+    padding: 20px 102px;
     min-height: 100vh;
     @include flex(stretch, center, column);
     flex: 1 1 50%;
+    background-color: $black;
     &__title{
-        @include text(25px, 400, black){
+        @include text(25px, 400, $white){
             text-align: center;
             font-family: 'Ubuntu', sans-serif;
         };
@@ -20,21 +21,21 @@ $style: 'block';
     }
     &__btn{
         min-width: 250px;
-        border: 1px solid #000;
+        border: 1px solid $white;
         padding: 10px 30px;
         border-radius: 2px;
         outline: none;
-        @include text(18px, 400, black){
+        @include text(18px, 400, $black){
             font-family: 'Ubuntu', sans-serif;
         };
         cursor: pointer;
-        @include transition;
+        // @include transition;
         &:hover{
             background-color: #c6c6c6;
             transform: scale(1.1);
         }
         &:active{
-            box-shadow: inset 0px 2px 5px 0 rgba(0, 0, 0, 0.5);
+            box-shadow: inset 0px 2px 5px 0 rgba(255, 255, 255, 0.5);
         }
     }
 }

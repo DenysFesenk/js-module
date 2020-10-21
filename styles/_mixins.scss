@@ -82,6 +82,13 @@
     left: $left;
   }
   
+  @mixin transition($types...) {
+    transition-property: $types;
+    transition-duration: 0.3s;
+    transition-timing-function: ease;
+    @content;
+  }
+  
   $z-index: (
     immortal: 100,
     superpopup: 20,

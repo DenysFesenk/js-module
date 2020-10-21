@@ -1,0 +1,67 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu&display=swap");
+/* Screens */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: row;
+  justify-content: stretch;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.block {
+  padding: 20px 102px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  align-items: center;
+  flex-wrap: nowrap;
+  flex: 1 1 50%;
+  background-color: #111111;
+}
+.block__title {
+  font-size: 25px;
+  font-weight: 400;
+  color: #f1f1f1;
+  text-align: center;
+  font-family: "Ubuntu", sans-serif;
+  margin-bottom: 20px;
+}
+.block__list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  list-style: none;
+}
+.block__item:not(:last-child) {
+  margin-bottom: 10px;
+}
+.block__btn {
+  min-width: 250px;
+  border: 1px solid #f1f1f1;
+  padding: 10px 30px;
+  border-radius: 2px;
+  outline: none;
+  font-size: 18px;
+  font-weight: 400;
+  color: #111111;
+  font-family: "Ubuntu", sans-serif;
+  cursor: pointer;
+}
+.block__btn:hover {
+  background-color: #c6c6c6;
+  transform: scale(1.1);
+}
+.block__btn:active {
+  box-shadow: inset 0px 2px 5px 0 rgba(255, 255, 255, 0.5);
+}
+
+/*# sourceMappingURL=/style.ff1c4cab.css.map */
