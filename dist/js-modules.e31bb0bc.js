@@ -236,9 +236,8 @@ var firstOne = document.getElementById('firstOne').addEventListener('click', fun
 
 var secondTwo = document.getElementById('secondTwo').addEventListener('click', function () {
   var randomNumber = Number(prompt('Введите число от 0 до 9'));
-  a = randomNumber;
 
-  switch (a) {
+  switch (randomNumber) {
     case 1:
       alert('1 - !');
       break;
@@ -283,15 +282,34 @@ var secondTwo = document.getElementById('secondTwo').addEventListener('click', f
       alert('странно!');
       break;
   }
-}); // 2.3 Запросить у пользователя год и проверить, високосный он или нет. Високосный год либо кратен 400, либо кратен 4 и при этом не кратен 100.
+}); // 2.3 Запросить у пользователя трехзначное число и проверить, есть ли в нем одинаковые цифры.
 
-var thirdThree = document.getElementById('thirdThree').addEventListener('click', function () {}); // 2.4 Запросить у пользователя пятиразрядное число и определить, является ли оно палиндромом.
-// 2.5 Написать конвертор валют. Пользователь вводит количество USD, выбирает, в какую валюту хочет перевести EUR, UAN или AZN, и получает в ответ соответствующую сумму.
-// 2.6 Запросить у пользователя сумму покупки и вывести сумму к оплате со скидкой: от 200 до 300 – скидка будет 3%, от 300 до 500 – 5%, от 500 и выше – 7%.
-// 2.7 Запросить у пользователя длину окружности и периметр квадрата. Определить, может ли такая окружность поместиться в указанный квадрат.
-// 2.8 Задать пользователю 3 вопроса, в каждом вопросе по 3 варианта ответа. За каждый правильный ответ начисляется 2 балла. После вопросов выведите пользователю количество набранных баллов.
-// 2.9 Запросить дату (день, месяц, год) и вывести следующую за ней дату. Учтите возможность перехода на следующий месяц, год, а также високосный год.
-},{}],"../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+var thirdThree = document.getElementById('thirdThree').addEventListener('click', function () {
+  var randomNumber = prompt('Введите трехзначное число на проверку', 123);
+  randomNumber[0] == randomNumber[1] || randomNumber[1] == randomNumber[2] || randomNumber[2] == randomNumber[0] ? alert('Найдено совпадение') : alert('Совпадение не найдено');
+}); // 2.4 Запросить у пользователя год и проверить, високосный он или нет. Високосный год либо кратен 400, либо кратен 4 и при этом не кратен 100.
+
+var fourthFore = document.getElementById('fourthFore').addEventListener('click', function () {
+  var randomYear = prompt('Угадайте высокосный год', 1994);
+  randomYear % 400 == 0 || randomYear % 4 == 0 && randomYear % 100 !== 0 ? alert('Верно, год высокосный!') : alert('Жаль, год не высокосный!');
+}); // 2.5 Запросить у пользователя пятиразрядное число и определить, является ли оно палиндромом.
+
+var fifthFive = document.getElementById('fifthFive').addEventListener('click', function () {
+  var fiveDigitNumber = prompt('Введите пятизначное число', 12321);
+
+  if (fiveDigitNumber < 10000) {
+    alert('Извините, вы ввели не пятизначное число');
+  } else if (fiveDigitNumber[0] == fiveDigitNumber[4] && fiveDigitNumber[1] == fiveDigitNumber[3]) {
+    alert('Число является палиндромом');
+  } else {
+    alert('Число НЕ является палиндромом');
+  }
+}); // 2.6 Написать конвертор валют. Пользователь вводит количество USD, выбирает, в какую валюту хочет перевести EUR, UAN или AZN, и получает в ответ соответствующую сумму.
+// 2.7 Запросить у пользователя сумму покупки и вывести сумму к оплате со скидкой: от 200 до 300 – скидка будет 3%, от 300 до 500 – 5%, от 500 и выше – 7%.
+// 2.8 Запросить у пользователя длину окружности и периметр квадрата. Определить, может ли такая окружность поместиться в указанный квадрат.
+// 2.9 Задать пользователю 3 вопроса, в каждом вопросе по 3 варианта ответа. За каждый правильный ответ начисляется 2 балла. После вопросов выведите пользователю количество набранных баллов.
+// 2.10 Запросить дату (день, месяц, год) и вывести следующую за ней дату. Учтите возможность перехода на следующий месяц, год, а также високосный год.
+},{}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -319,7 +337,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58018" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58823" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -495,5 +513,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../../../.config/yarn/global/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","index.js"], null)
+},{}]},{},["node_modules/parcel-bundler/src/builtins/hmr-runtime.js","index.js"], null)
 //# sourceMappingURL=/js-modules.e31bb0bc.js.map
