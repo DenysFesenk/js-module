@@ -172,7 +172,7 @@ const fourthFore = document.getElementById('fourthFore').addEventListener('click
 // 2.5 Запросить у пользователя пятиразрядное число и определить, является ли оно палиндромом.
 const fifthFive = document.getElementById('fifthFive').addEventListener('click', () => {
     let fiveDigitNumber = prompt('Введите пятизначное число', 12321);
-    if (fiveDigitNumber < 10000){
+    if (fiveDigitNumber < 10000 || fiveDigitNumber > 99999){
         alert('Извините, вы ввели не пятизначное число')
     } else if(fiveDigitNumber[0] == fiveDigitNumber[4] && fiveDigitNumber[1] == fiveDigitNumber[3]){
         alert('Число является палиндромом')

@@ -297,7 +297,7 @@ var fourthFore = document.getElementById('fourthFore').addEventListener('click',
 var fifthFive = document.getElementById('fifthFive').addEventListener('click', function () {
   var fiveDigitNumber = prompt('Введите пятизначное число', 12321);
 
-  if (fiveDigitNumber < 10000) {
+  if (fiveDigitNumber < 10000 || fiveDigitNumber > 99999) {
     alert('Извините, вы ввели не пятизначное число');
   } else if (fiveDigitNumber[0] == fiveDigitNumber[4] && fiveDigitNumber[1] == fiveDigitNumber[3]) {
     alert('Число является палиндромом');
