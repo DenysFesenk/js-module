@@ -182,11 +182,70 @@ const fifthFive = document.getElementById('fifthFive').addEventListener('click',
 })
 
 // 2.6 Написать конвертор валют. Пользователь вводит количество USD, выбирает, в какую валюту хочет перевести EUR, UAN или AZN, и получает в ответ соответствующую сумму.
+const sixthSix = document.getElementById('sixthSix').addEventListener('click', () => {
+    let amountUSD = prompt('Сколько USD вы хотите поменять ?', 300);
+         currency = prompt('В какую валюту хочет перевести: EUR, UAN, AZN?', 'UAN');
+    const sumEUR = 0.85 * amountUSD;
+    const sumUAN = 28.34 * amountUSD;
+    const sumAZN = 1.7 * amountUSD;
+    switch(currency){
+        case "EUR":
+        case "eur":
+            alert(`Вы получите ${sumEUR} евро`);
+            break;
+        case "UAN":
+        case "uan":
+            alert(`Вы получите ${sumUAN} гривен`);
+            break;
+        case "AZN":
+        case "azn":
+            alert(`Вы получите ${sumAZN} азербайджанских манат`); 
+            break;
+        default:
+            alert('Не коректная валюта !');
+    }
+});
 
 // 2.7 Запросить у пользователя сумму покупки и вывести сумму к оплате со скидкой: от 200 до 300 – скидка будет 3%, от 300 до 500 – 5%, от 500 и выше – 7%.
+const seventhSeven = document.getElementById('seventhSeven').addEventListener('click', () => {
+    let sumMoney = Number(prompt('Введите суму покупок!', 450));
+    if(sumMoney >= 200 && sumMoney < 300){
+        alert(`С вас ${sumMoney - (sumMoney / 100 * 3)} валюты.`);
+    } else if(sumMoney >= 300 && sumMoney < 500){
+        alert(`С вас ${sumMoney - (sumMoney / 100 * 5)} валюты.`);
+    }else if(sumMoney >= 500){
+        alert(`С вас ${sumMoney - (sumMoney / 100 * 7)} валюты.`);
+    } else{
+        alert(`У вас нет скидки ⚠️. С вас ${sumMoney} валюты.`)
+    }
+})
 
 // 2.8 Запросить у пользователя длину окружности и периметр квадрата. Определить, может ли такая окружность поместиться в указанный квадрат.
+const eighthEight = document.getElementById('eighthEight').addEventListener('click', () => {
+    let perimetrSquade = Number(prompt('Введите периметр квадрата!', 70));
+        lengthCircle = Number(prompt('Введите длину окружности!', 110));
+    perimetrSquade >= lengthCircle? alert(`Ура. Круг поместится в квадрат!`) : alert(`Эхх... Круг не поместился в квадрат!`);
+})
 
 // 2.9 Задать пользователю 3 вопроса, в каждом вопросе по 3 варианта ответа. За каждый правильный ответ начисляется 2 балла. После вопросов выведите пользователю количество набранных баллов.
+const ninthNine = document.getElementById('ninthNine').addEventListener('click', () => {
+    let questionOne = prompt('Назовите столицу Польши!', "Варшава, Вроцлав, Люблин");
+        questionTwo = prompt('Cколько было президентов США?', "44, 45, 46");
+        questionTree = prompt('2+2*2', "4, 6, 8");
+        points = 0;
+    if(questionOne == "Варшава"){
+        points += 2;
+    } if(questionTwo == 44){
+        points += 2;
+    } if(questionTree == 6){
+        points += 2;
+    } 
+    points >= 2 ? alert(`Поздравляю, вы заработали ${points} баллов.`) : alert(`К сожалению, у вас нет правильных ответов`);
+})
 
 // 2.10 Запросить дату (день, месяц, год) и вывести следующую за ней дату. Учтите возможность перехода на следующий месяц, год, а также високосный год.
+const tenTenth = document.getElementById('tenTenth').addEventListener('click', () => {
+    let someData = new Date(prompt(`Введите дату (yyyy-mm-dd)`, "2011-03-15"))
+    someData.setDate(someData.getDate() + 1);
+    alert(someData);
+})

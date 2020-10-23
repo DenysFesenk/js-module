@@ -305,10 +305,81 @@ var fifthFive = document.getElementById('fifthFive').addEventListener('click', f
     alert('Число НЕ является палиндромом');
   }
 }); // 2.6 Написать конвертор валют. Пользователь вводит количество USD, выбирает, в какую валюту хочет перевести EUR, UAN или AZN, и получает в ответ соответствующую сумму.
-// 2.7 Запросить у пользователя сумму покупки и вывести сумму к оплате со скидкой: от 200 до 300 – скидка будет 3%, от 300 до 500 – 5%, от 500 и выше – 7%.
-// 2.8 Запросить у пользователя длину окружности и периметр квадрата. Определить, может ли такая окружность поместиться в указанный квадрат.
-// 2.9 Задать пользователю 3 вопроса, в каждом вопросе по 3 варианта ответа. За каждый правильный ответ начисляется 2 балла. После вопросов выведите пользователю количество набранных баллов.
-// 2.10 Запросить дату (день, месяц, год) и вывести следующую за ней дату. Учтите возможность перехода на следующий месяц, год, а также високосный год.
+
+var sixthSix = document.getElementById('sixthSix').addEventListener('click', function () {
+  var amountUSD = prompt('Сколько USD вы хотите поменять ?', 300);
+  currency = prompt('В какую валюту хочет перевести: EUR, UAN, AZN?', 'UAN');
+  var sumEUR = 0.85 * amountUSD;
+  var sumUAN = 28.34 * amountUSD;
+  var sumAZN = 1.7 * amountUSD;
+
+  switch (currency) {
+    case "EUR":
+    case "eur":
+      alert("\u0412\u044B \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u0435 ".concat(sumEUR, " \u0435\u0432\u0440\u043E"));
+      break;
+
+    case "UAN":
+    case "uan":
+      alert("\u0412\u044B \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u0435 ".concat(sumUAN, " \u0433\u0440\u0438\u0432\u0435\u043D"));
+      break;
+
+    case "AZN":
+    case "azn":
+      alert("\u0412\u044B \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u0435 ".concat(sumAZN, " \u0430\u0437\u0435\u0440\u0431\u0430\u0439\u0434\u0436\u0430\u043D\u0441\u043A\u0438\u0445 \u043C\u0430\u043D\u0430\u0442"));
+      break;
+
+    default:
+      alert('Не коректная валюта !');
+  }
+}); // 2.7 Запросить у пользователя сумму покупки и вывести сумму к оплате со скидкой: от 200 до 300 – скидка будет 3%, от 300 до 500 – 5%, от 500 и выше – 7%.
+
+var seventhSeven = document.getElementById('seventhSeven').addEventListener('click', function () {
+  var sumMoney = Number(prompt('Введите суму покупок!', 450));
+
+  if (sumMoney >= 200 && sumMoney < 300) {
+    alert("\u0421 \u0432\u0430\u0441 ".concat(sumMoney - sumMoney / 100 * 3, " \u0432\u0430\u043B\u044E\u0442\u044B."));
+  } else if (sumMoney >= 300 && sumMoney < 500) {
+    alert("\u0421 \u0432\u0430\u0441 ".concat(sumMoney - sumMoney / 100 * 5, " \u0432\u0430\u043B\u044E\u0442\u044B."));
+  } else if (sumMoney >= 500) {
+    alert("\u0421 \u0432\u0430\u0441 ".concat(sumMoney - sumMoney / 100 * 7, " \u0432\u0430\u043B\u044E\u0442\u044B."));
+  } else {
+    alert("\u0423 \u0432\u0430\u0441 \u043D\u0435\u0442 \u0441\u043A\u0438\u0434\u043A\u0438 \u26A0\uFE0F. \u0421 \u0432\u0430\u0441 ".concat(sumMoney, " \u0432\u0430\u043B\u044E\u0442\u044B."));
+  }
+}); // 2.8 Запросить у пользователя длину окружности и периметр квадрата. Определить, может ли такая окружность поместиться в указанный квадрат.
+
+var eighthEight = document.getElementById('eighthEight').addEventListener('click', function () {
+  var perimetrSquade = Number(prompt('Введите периметр квадрата!', 70));
+  lengthCircle = Number(prompt('Введите длину окружности!', 110));
+  perimetrSquade >= lengthCircle ? alert("\u0423\u0440\u0430. \u041A\u0440\u0443\u0433 \u043F\u043E\u043C\u0435\u0441\u0442\u0438\u0442\u0441\u044F \u0432 \u043A\u0432\u0430\u0434\u0440\u0430\u0442!") : alert("\u042D\u0445\u0445... \u041A\u0440\u0443\u0433 \u043D\u0435 \u043F\u043E\u043C\u0435\u0441\u0442\u0438\u043B\u0441\u044F \u0432 \u043A\u0432\u0430\u0434\u0440\u0430\u0442!");
+}); // 2.9 Задать пользователю 3 вопроса, в каждом вопросе по 3 варианта ответа. За каждый правильный ответ начисляется 2 балла. После вопросов выведите пользователю количество набранных баллов.
+
+var ninthNine = document.getElementById('ninthNine').addEventListener('click', function () {
+  var questionOne = prompt('Назовите столицу Польши!', "Варшава, Вроцлав, Люблин");
+  questionTwo = prompt('Cколько было президентов США?', "44, 45, 46");
+  questionTree = prompt('2+2*2', "4, 6, 8");
+  points = 0;
+
+  if (questionOne == "Варшава") {
+    points += 2;
+  }
+
+  if (questionTwo == 44) {
+    points += 2;
+  }
+
+  if (questionTree == 6) {
+    points += 2;
+  }
+
+  points >= 2 ? alert("\u041F\u043E\u0437\u0434\u0440\u0430\u0432\u043B\u044F\u044E, \u0432\u044B \u0437\u0430\u0440\u0430\u0431\u043E\u0442\u0430\u043B\u0438 ".concat(points, " \u0431\u0430\u043B\u043B\u043E\u0432.")) : alert("\u041A \u0441\u043E\u0436\u0430\u043B\u0435\u043D\u0438\u044E, \u0443 \u0432\u0430\u0441 \u043D\u0435\u0442 \u043F\u0440\u0430\u0432\u0438\u043B\u044C\u043D\u044B\u0445 \u043E\u0442\u0432\u0435\u0442\u043E\u0432");
+}); // 2.10 Запросить дату (день, месяц, год) и вывести следующую за ней дату. Учтите возможность перехода на следующий месяц, год, а также високосный год.
+
+var tenTenth = document.getElementById('tenTenth').addEventListener('click', function () {
+  var someData = new Date(prompt("\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u0434\u0430\u0442\u0443 (yyyy-mm-dd)", "2011-03-15"));
+  someData.setDate(someData.getDate() + 1);
+  alert(someData);
+});
 },{}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -337,7 +408,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58823" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56943" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
