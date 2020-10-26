@@ -2,9 +2,16 @@ $style: 'block';
 .#{$style}{
     padding: 20px 102px;
     min-height: 100vh;
-    @include flex(stretch, center, column);
     flex: 1 1 50%;
     background-color: $black;
+    position: relative;
+    &__list-cards{
+        @include flex(stretch, center, row, wrap);
+    }
+    &__card{
+        flex-basis: 50%;
+        padding: 20px;
+    }
     &__title{
         @include text(25px, 400, $white){
             text-align: center;
@@ -14,7 +21,6 @@ $style: 'block';
     }
     &__list{
         @include flex(center, center, column);
-        list-style: none;
     }
     &__item:not(:last-child){
         margin-bottom: 10px;
@@ -29,13 +35,33 @@ $style: 'block';
             font-family: 'Ubuntu', sans-serif;
         };
         cursor: pointer;
-        // @include transition;
+        @include transition(all);
         &:hover{
             background-color: #c6c6c6;
             transform: scale(1.1);
         }
         &:active{
             box-shadow: inset 0px 2px 5px 0 rgba(255, 255, 255, 0.5);
+        }
+    }
+
+    .btn-down{
+        position: absolute;
+        top: 94vh;
+        left: 50%;
+        transform: translateX(-50%);
+        @include text(15px, 700, $red){
+            text-transform: uppercase;
+            text-decoration: none;
+        }
+        background-color: $black;
+        outline: none;
+        border: none;
+        cursor: pointer;
+        opacity: .5;
+        @include transition(opacity);
+        &:hover{
+           opacity: 1; 
         }
     }
 }
