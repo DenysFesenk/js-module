@@ -118,6 +118,8 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   return newRequire;
 })({"index.js":[function(require,module,exports) {
+function _readOnlyError(name) { throw new Error("\"" + name + "\" is read-only"); }
+
 // 1.Запросите у пользователя его имя и выведите в ответ: «Привет, его имя!».
 var firstBtn = document.getElementById('first'); //достаю кнопку из html файла 
 
@@ -148,7 +150,7 @@ fourthBtn.addEventListener('click', function () {
   var r = prompt('Задайте радиус окружности?', 30);
   var p = 3.1415926535;
   var areaOfCircle = p * Math.pow(r, 2);
-  areaOfCircle = Math.floor(areaOfCircle);
+  areaOfCircle = (_readOnlyError("areaOfCircle"), Math.floor(areaOfCircle));
   alert("\u041F\u043B\u043E\u0449\u0430\u0434\u044C \u043E\u043A\u0440\u0443\u0436\u043D\u043E\u0441\u0442\u0438 ".concat(areaOfCircle, "!"));
 }); // 5.Запросите у пользователя расстояние в км между двумя городами и за сколько часов он хочет добраться. Посчитайте скорость, с которой необходимо двигаться, чтобы успеть вовремя.
 
@@ -157,7 +159,7 @@ fifthBtn.addEventListener('click', function () {
   var distance = prompt('Какая дистанция между точкой А и Б?', 340);
   var timeToMove = prompt('За сколько времени вы планируете добраться ?', 6);
   var speed = distance / timeToMove;
-  speed = Math.floor(speed);
+  speed = (_readOnlyError("speed"), Math.floor(speed));
   alert("\u0412\u0430\u043C \u043D\u0443\u0436\u043D\u043E \u0434\u0432\u0438\u0433\u0430\u0442\u044C\u0441\u044F \u0441\u043E \u0441\u043A\u043E\u0440\u043E\u0441\u0442\u044C ".concat(speed, "\u043A\u043C/\u0447"));
 }); // 6.Реализуйте конвертор валют. Пользователь вводит доллары, программа переводит в евро. Курс валюты храните в константе.
 
@@ -173,7 +175,7 @@ var seventhBtn = document.getElementById('seventh');
 seventhBtn.addEventListener('click', function () {
   var memory = prompt('Какой у вас обьем флешки в ГБ?', 16);
   var files = memory * 1000 / 820;
-  files = Math.floor(files);
+  files = (_readOnlyError("files"), Math.floor(files));
   var residue = memory * 1000 % 820;
   alert("\u041D\u0430 \u0432\u0430\u0448\u0443 \u0444\u043B\u0435\u0448\u043A\u0443 \u0441 \u043E\u0431\u044C\u0435\u043C\u043E\u043C ".concat(memory, ", \u0432\u044B \u0441\u043C\u043E\u0436\u0435\u0442\u0435 \u0437\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u044C ").concat(files, " \u0444\u0430\u0439\u043B\u043E\u0432 \u043F\u043E 820\u043C\u0431. \u0410 \u0435\u0449\u0435 \u0443 \u0432\u0430\u0441 \u043E\u0441\u0442\u0430\u043D\u0435\u0442\u0441\u044F ").concat(residue, "\u043C\u0431\uD83D\uDE0A"));
 }); // 8.Пользователь вводит сумму денег в кошельке и цену одной шоколадки. Программа выводит, сколько шоколадок может купить пользователь, и сколько сдачи у него останется.
@@ -183,7 +185,7 @@ eighthBtn.addEventListener('click', function () {
   var amountOfMoney = prompt('Сколько у вас есть денег ?', 200);
   var chokolate = prompt('Цена одной шоколадки?', 28.5);
   var pieces = amountOfMoney / chokolate;
-  pieces = Math.floor(pieces);
+  pieces = (_readOnlyError("pieces"), Math.floor(pieces));
   var surrender = amountOfMoney % chokolate;
   var currency = 'гривен';
   alert("\u041D\u0430 ".concat(amountOfMoney, "\u0433\u0440\u0438\u0432\u0435\u043D \u0432\u044B \u043C\u043E\u0436\u0435\u0442\u0435 \u043A\u0443\u043F\u0438\u0442\u044C ").concat(pieces, " \u0448\u043E\u043A\u043E\u043B\u0430\u0434\u043E\u043A. \u0418 \u0443 \u0432\u0430\u0441 \u043E\u0441\u0442\u0430\u043D\u0435\u0442\u0441\u044F ").concat(surrender, " ").concat(currency, "!"));
@@ -212,7 +214,7 @@ tenthBtn.addEventListener('click', function () {
   var num = prompt('Введите сумму вклада!');
   var months = prompt('На сколько месяцев вы хотите внести сумму ?');
   var sum = num * 0.05 / 12 * months;
-  sum = Math.floor(sum);
+  sum = (_readOnlyError("sum"), Math.floor(sum));
   alert("\u0417\u0430 ".concat(months, " \u043C\u0435\u0441\u044F\u0446\u0430, \u0432\u0430\u043C \u0431\u0443\u0434\u0435\u0442 \u043D\u0430\u0447\u0438\u0441\u043B\u0435\u043D\u043D\u043E ").concat(sum, " \u0433\u0440\u0438\u0432\u043D\u0443."));
 }); //1.1 Запросить у пользователя его возраст и определить, кем он является: ребенком (0–2), подростком (12–18), взрослым (18_60) или пенсионером (60– ...).
 
@@ -350,14 +352,14 @@ var seventhSeven = document.getElementById('seventhSeven').addEventListener('cli
 
 var eighthEight = document.getElementById('eighthEight').addEventListener('click', function () {
   var perimetrSquade = Number(prompt('Введите периметр квадрата!', 70));
-  lengthCircle = Number(prompt('Введите длину окружности!', 110));
+  var lengthCircle = Number(prompt('Введите длину окружности!', 110));
   perimetrSquade >= lengthCircle ? alert("\u0423\u0440\u0430. \u041A\u0440\u0443\u0433 \u043F\u043E\u043C\u0435\u0441\u0442\u0438\u0442\u0441\u044F \u0432 \u043A\u0432\u0430\u0434\u0440\u0430\u0442!") : alert("\u042D\u0445\u0445... \u041A\u0440\u0443\u0433 \u043D\u0435 \u043F\u043E\u043C\u0435\u0441\u0442\u0438\u043B\u0441\u044F \u0432 \u043A\u0432\u0430\u0434\u0440\u0430\u0442!");
 }); // 2.9 Задать пользователю 3 вопроса, в каждом вопросе по 3 варианта ответа. За каждый правильный ответ начисляется 2 балла. После вопросов выведите пользователю количество набранных баллов.
 
 var ninthNine = document.getElementById('ninthNine').addEventListener('click', function () {
   var questionOne = prompt('Назовите столицу Польши!', "Варшава, Вроцлав, Люблин");
-  questionTwo = prompt('Cколько было президентов США?', "44, 45, 46");
-  questionTree = prompt('2+2*2', "4, 6, 8");
+  var questionTwo = prompt('Cколько было президентов США?', "44, 45, 46");
+  var questionTree = prompt('2+2*2', "4, 6, 8");
   points = 0;
 
   if (questionOne == "Варшава") {
@@ -379,12 +381,12 @@ var tenTenth = document.getElementById('tenTenth').addEventListener('click', fun
   var someData = new Date(prompt("\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u0434\u0430\u0442\u0443 (yyyy-mm-dd)", "2011-03-15"));
   someData.setDate(someData.getDate() + 1);
   alert(someData);
-}); // 1.Подсчитать сумму всех чисел в заданном пользователем диапазоне.
+}); // 3.1.Подсчитать сумму всех чисел в заданном пользователем диапазоне.
 
 var threeOne = document.getElementById('threeOne').addEventListener('click', function () {
   var a = Number(prompt("Введите начало диапазона!", "1"));
-  b = Number(prompt("Введите начало конец!", "99"));
-  sum = 0;
+  var b = Number(prompt("Введите начало конец!", "99"));
+  var sum = 0;
 
   while (a <= b) {
     sum += a;
@@ -392,15 +394,204 @@ var threeOne = document.getElementById('threeOne').addEventListener('click', fun
   }
 
   alert(sum);
-}); // 2.Запросить 2 числа и найти только наибольший общий делитель.
-// 3.Запросить у пользователя число и вывести все делители этого числа.
-// 4.Определить количество цифр в введенном числе.
-// 5.Запросить у пользователя 10 чисел и подсчитать, сколько он ввел положительных, отрицательных и нулей. При этом также посчитать, сколько четных и нечетных. Вывести статистику на экран. Учтите, что достаточно одной переменной (не 10) для ввода чисел пользователем.
-// 6.Зациклить калькулятор. Запросить у пользователя 2 числа и знак, решить пример, вывести результат и спросить, хочет ли он решить еще один пример. И так до тех пор, пока пользователь не откажется.
-// 7.Запросить у пользователя число и на сколько цифр его сдвинуть. Сдвинуть цифры числа и вывести результат (если число 123456 сдвинуть на 2 цифры, то получится 345612).
-// 8.Зациклить вывод дней недели таким образом: «День недели. Хотите увидеть следующий день?» и так до тех пор, пока пользователь нажимает OK.
-// 9.Вывести таблицу умножения для всех чисел от 2 до 9. Каждое число необходимо умножить на числа от 1 до 10.
-// 10.Игра «Угадай число». Предложить пользователю загадать число от 0 до 100 и отгадать его следующим способом: каждую итерацию цикла делите диапазон чисел пополам, записываете результат в N и спрашиваете у пользователя «Ваше число > N, < N или == N?». В зависимости от того, что указал пользователь, уменьшаете диапазон. Начальный диапазон от 0 до 100, поделили пополам и получили 50. Если пользователь указал, что его число > 50, то изменили диапазон на от 51 до 100. И так до тех пор, пока пользователь не выберет == N.
+}); // 3.2.Запросить 2 числа и найти только наибольший общий делитель.
+
+var threeTwo = document.getElementById('threeTwo').addEventListener('click', function () {
+  var firstNumber = Number(prompt("Введите первое число", 40));
+  var secondNumber = Number(prompt("Введите второе число", 80));
+
+  while (firstNumber !== 0 && secondNumber !== 0) {
+    firstNumber > secondNumber ? firstNumber %= secondNumber : secondNumber %= firstNumber;
+  }
+
+  alert(firstNumber + secondNumber);
+}); // 3.3.Запросить у пользователя число и вывести все делители этого числа.
+
+var threeThree = document.getElementById('threeThree').addEventListener('click', function () {
+  var number = Number(prompt('Введите число', 177));
+  var i = 1;
+
+  while (i <= number) {
+    i++;
+    number % i == 0 && i !== number ? alert(i) : false;
+  }
+}); // 3.4.Определить количество цифр в введенном числе.
+
+var threeFore = document.getElementById('threeFore').addEventListener('click', function () {
+  var number = prompt('Введите число', 2341);
+  alert(number.length);
+}); // 3.5.Запросить у пользователя 10 чисел и подсчитать, сколько он ввел положительных, отрицательных и нулей. При этом также посчитать, сколько четных и нечетных. Вывести статистику на экран. Учтите, что достаточно одной переменной (не 10) для ввода чисел пользователем.
+
+var threeFive = document.getElementById('threeFive').addEventListener('click', function () {
+  alert('В процессе!');
+}); // 3.6.Зациклить калькулятор. Запросить у пользователя 2 числа и знак, решить пример, вывести результат и спросить, хочет ли он решить еще один пример. И так до тех пор, пока пользователь не откажется.
+
+var threeSix = document.getElementById("threeSix").addEventListener("click", function () {
+  do {
+    var firstNumber = Number(prompt("Введи первое число", 124));
+    var sign = prompt("Укажите задачу", "*");
+    var secondNumber = Number(prompt("Введи первое число", 124));
+
+    switch (sign) {
+      case '+':
+        alert(firstNumber + secondNumber);
+        break;
+
+      case '-':
+        alert(firstNumber - secondNumber);
+        break;
+
+      case '*':
+        alert(firstNumber * secondNumber);
+        break;
+
+      case '/':
+        alert(firstNumber / secondNumber);
+        break;
+
+      case '%':
+        alert(firstNumber % secondNumber);
+        break;
+
+      default:
+        break;
+    }
+  } while (confirm('Желаешь ли ты решить еще один пример?'));
+}); // 3.7.Запросить у пользователя число и на сколько цифр его сдвинуть. Сдвинуть цифры числа и вывести результат (если число 123456 сдвинуть на 2 цифры, то получится 345612).
+
+var threeSeven = document.getElementById('threeSeven').addEventListener('click', function () {
+  alert('В процессе!');
+}); // 3.8.Зациклить вывод дней недели таким образом: «День недели. Хотите увидеть следующий день?» и так до тех пор, пока пользователь нажимает OK.
+
+var threeEight = document.getElementById('threeEight').addEventListener('click', function () {
+  // alert('В процессе!')
+  var i = 0;
+
+  do {
+    var days = [0, 1, 2, 3, 4, 5, 6, 7];
+    var day = '';
+
+    switch (days[i]) {
+      case 0:
+        day = "Sunday";
+        alert(day);
+        break;
+
+      case 1:
+        day = "Monday";
+        alert(day);
+        break;
+
+      case 2:
+        day = "Tuesday";
+        alert(day);
+        break;
+
+      case 3:
+        day = "Wednesday";
+        alert(day);
+        break;
+
+      case 4:
+        day = "Thursday";
+        alert(day);
+        break;
+
+      case 5:
+        day = "Friday";
+        alert(day);
+        break;
+
+      case 6:
+        day = "Saturday";
+        alert(day);
+        break;
+
+      case 7:
+        day = "Sun";
+        i -= 7;
+        alert(day);
+
+      default:
+        break;
+    }
+
+    ;
+    i++;
+  } while (confirm("Хотите увидеть следующий день?"));
+}); // 3.9.Вывести таблицу умножения для всех чисел от 2 до 9. Каждое число необходимо умножить на числа от 1 до 10.
+
+var threeNine = document.getElementById('threeNine').addEventListener('click', function () {
+  var multiTable = alert;
+
+  for (var i = 2; i < 10; i++) {
+    for (var n = 1; n <= 10; n++) {
+      console.log("".concat(i, " * ").concat(n, " = ").concat(i * n));
+    }
+  }
+
+  alert('готово, загляните в консоль !');
+}); // 3.10.Игра «Угадай число». Предложить пользователю загадать число от 0 до 100 и отгадать его следующим способом: каждую итерацию цикла делите диапазон чисел пополам, записываете результат в N и спрашиваете у пользователя «Ваше число > N, < N или == N?». В зависимости от того, что указал пользователь, уменьшаете диапазон. Начальный диапазон от 0 до 100, поделили пополам и получили 50. Если пользователь указал, что его число > 50, то изменили диапазон на от 51 до 100. И так до тех пор, пока пользователь не выберет == N.
+
+var threeTenth = document.getElementById('threeTenth').addEventListener('click', function () {
+  alert('В процессе!');
+}); // 4.1.Написать функцию, которая принимает 2 числа и возвращает -1, если первое меньше, чем второе; 1 – если первое больше, чем второе; и 0 – если числа равны.
+
+var foreOne = document.getElementById('foreOne').addEventListener('click', function () {
+  function backNumber() {
+    var firstNum = Number(prompt('Введи первое число', 10));
+    var secondNum = Number(prompt('Введи второе число', 20));
+
+    if (firstNum > secondNum) {
+      alert('1');
+    } else if (firstNum === secondNum) {
+      alert('0');
+    } else if (firstNum < secondNum) {
+      alert('-1');
+    }
+  }
+
+  backNumber();
+}); // 4.2.Написать функцию, которая вычисляет факториал переданного ей числа.
+
+var foreTwo = document.getElementById('foreTwo').addEventListener('click', function () {
+  var n = Number(prompt('Введи любо число', 3));
+
+  function factorial(n) {
+    return n != 1 ? n * factorial(n - 1) : 1;
+  }
+
+  alert(factorial(n));
+}); // 4.3.Написать функцию, которая принимает три отдельные цифры и превращает их в одно число. Например: цифры 1, 4, 9 превратятся в число 149.
+
+var foreThree = document.getElementById('foreThree').addEventListener('click', function () {
+  var firstNum = Number(prompt('Введи первое число', 12));
+  var secondNum = Number(prompt('Введи второе число', 34));
+  var thirdNum = Number(prompt('Введи третье число', 56));
+
+  function transnumber() {
+    var arr = [firstNum, secondNum, thirdNum];
+    alert(arr.join(''));
+  }
+
+  transnumber();
+}); // 4.4.Написать функцию, которая принимает длину и ширину прямоугольника и вычисляет его площадь. Если в функцию передали 1 параметр, то она вычисляет площадь квадрата.
+
+var foreFore = document.getElementById('foreFore').addEventListener('click', function () {
+  var width = Number(prompt('Введи ширину', 27));
+  var height = Number(prompt('Введи длину', 32));
+
+  function square(width, height) {
+    return width > 0 ? width > 0 && height > 0 ? width * height : width * 4 : height * 4;
+  }
+
+  alert(square(width, height));
+}); // 4.5.Написать функцию, которая проверяет, является ли переданное ей число совершенным. Совершенное число – это число, равное сумме всех своих собственных делителей.
+// 4.6.Написать функцию, которая принимает минимальное и максимальное значения для диапазона, и выводит только те числа из диапазона, которые являются совершенными. Используйте написанную ранее функцию, чтобы узнавать, совершенное число или нет. 
+// 4.7.Написать функцию, которая принимает время (часы, минуты, секунды) и выводит его на экран в формате «чч:мм:сс».Если при вызове функции минуты и/или секунды не были переданы, то выводить их как 00.
+// 4.8.Написать функцию, которая принимает часы, минуты и секунды и возвращает это время в секундах.
+// 4.9.Написать функцию, которая принимает количество секунд, переводит их в часы, минуты и секунды и возвращает в виде строки «чч:мм:сс».
+// 4.10.Написать функцию, которая считает разницу между датами. Функция принимает 6 параметров, которые описывают 2 даты, и возвращает результат в виде строки «чч:мм:сс». При выполнении задания используйте функции из предыдущих 2-х заданий: сначала обе даты переведите в секунды, узнайте разницу в секундах, а потом разницу переведите обратно в «чч:мм:сс»
 },{}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -429,7 +620,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51225" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62987" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
