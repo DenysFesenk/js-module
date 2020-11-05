@@ -216,7 +216,8 @@ tenthBtn.addEventListener('click', function () {
   var sum = num * 0.05 / 12 * months;
   sum = (_readOnlyError("sum"), Math.floor(sum));
   alert("\u0417\u0430 ".concat(months, " \u043C\u0435\u0441\u044F\u0446\u0430, \u0432\u0430\u043C \u0431\u0443\u0434\u0435\u0442 \u043D\u0430\u0447\u0438\u0441\u043B\u0435\u043D\u043D\u043E ").concat(sum, " \u0433\u0440\u0438\u0432\u043D\u0443."));
-}); //1.1 Запросить у пользователя его возраст и определить, кем он является: ребенком (0–2), подростком (12–18), взрослым (18_60) или пенсионером (60– ...).
+}); // ========
+//1.1 Запросить у пользователя его возраст и определить, кем он является: ребенком (0–2), подростком (12–18), взрослым (18_60) или пенсионером (60– ...).
 
 var firstOne = document.getElementById('firstOne').addEventListener('click', function () {
   var age = Number(prompt('Сколько вам лет?'));
@@ -381,7 +382,8 @@ var tenTenth = document.getElementById('tenTenth').addEventListener('click', fun
   var someData = new Date(prompt("\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u0434\u0430\u0442\u0443 (yyyy-mm-dd)", "2011-03-15"));
   someData.setDate(someData.getDate() + 1);
   alert(someData);
-}); // 3.1.Подсчитать сумму всех чисел в заданном пользователем диапазоне.
+}); // ========
+// 3.1.Подсчитать сумму всех чисел в заданном пользователем диапазоне.
 
 var threeOne = document.getElementById('threeOne').addEventListener('click', function () {
   var a = Number(prompt("Введите начало диапазона!", "1"));
@@ -535,7 +537,8 @@ var threeNine = document.getElementById('threeNine').addEventListener('click', f
 
 var threeTenth = document.getElementById('threeTenth').addEventListener('click', function () {
   alert('В процессе!');
-}); // 4.1.Написать функцию, которая принимает 2 числа и возвращает -1, если первое меньше, чем второе; 1 – если первое больше, чем второе; и 0 – если числа равны.
+}); // ========
+// 4.1.Написать функцию, которая принимает 2 числа и возвращает -1, если первое меньше, чем второе; 1 – если первое больше, чем второе; и 0 – если числа равны.
 
 var foreOne = document.getElementById('foreOne').addEventListener('click', function () {
   function backNumber() {
@@ -587,11 +590,68 @@ var foreFore = document.getElementById('foreFore').addEventListener('click', fun
 
   alert(square(width, height));
 }); // 4.5.Написать функцию, которая проверяет, является ли переданное ей число совершенным. Совершенное число – это число, равное сумме всех своих собственных делителей.
-// 4.6.Написать функцию, которая принимает минимальное и максимальное значения для диапазона, и выводит только те числа из диапазона, которые являются совершенными. Используйте написанную ранее функцию, чтобы узнавать, совершенное число или нет. 
-// 4.7.Написать функцию, которая принимает время (часы, минуты, секунды) и выводит его на экран в формате «чч:мм:сс».Если при вызове функции минуты и/или секунды не были переданы, то выводить их как 00.
-// 4.8.Написать функцию, которая принимает часы, минуты и секунды и возвращает это время в секундах.
-// 4.9.Написать функцию, которая принимает количество секунд, переводит их в часы, минуты и секунды и возвращает в виде строки «чч:мм:сс».
-// 4.10.Написать функцию, которая считает разницу между датами. Функция принимает 6 параметров, которые описывают 2 даты, и возвращает результат в виде строки «чч:мм:сс». При выполнении задания используйте функции из предыдущих 2-х заданий: сначала обе даты переведите в секунды, узнайте разницу в секундах, а потом разницу переведите обратно в «чч:мм:сс»
+
+var foreFive = document.getElementById('foreFive').addEventListener('click', function () {
+  var randomNumber = Number(prompt('Введи любо число', 3));
+
+  var isPerfect = function isPerfect(randomNumber) {
+    if (randomNumber === 0) return false;
+    var sum = 0;
+
+    for (var divisor = 1; divisor < randomNumber; divisor += 1) {
+      if (randomNumber % divisor === 0) sum += divisor;
+    }
+
+    return sum === randomNumber;
+  };
+
+  alert(isPerfect(randomNumber));
+}); // 4.6.Написать функцию, которая принимает минимальное и максимальное значения для диапазона, и выводит только те числа из диапазона, которые являются совершенными. Используйте написанную ранее функцию, чтобы узнавать, совершенное число или нет. 
+
+var foreSix = document.getElementById('foreSix').addEventListener('click', function () {
+  var minNumber = Number(prompt('Введи минимальное значение', 3));
+  var maxNumber = Number(prompt('Введи максимальное значение', 300));
+  var array = [];
+
+  for (var i = minNumber; i <= maxNumber; i++) {
+    var isPerfect = function isPerfect(i) {
+      if (i === 0) return false;
+      var sum = 0;
+
+      for (var divisor = 1; divisor < i; divisor += 1) {
+        if (i % divisor === 0) sum += divisor;
+      }
+
+      return sum === i;
+    };
+
+    console.log("".concat(i, " = ").concat(isPerfect(i)));
+  }
+}); // 4.7.Написать функцию, которая принимает время (часы, минуты, секунды) и выводит его на экран в формате «чч:мм:сс».Если при вызове функции минуты и/или секунды не были переданы, то выводить их как 00.
+
+var foreSeven = document.getElementById('foreSeven').addEventListener('click', function () {
+  var hours = Number(prompt('Сколько часов ?', 3));
+  var minuts = Number(prompt('Сколько минут ?', 25));
+  var seconds = Number(prompt('Сколько секунд ?', 17));
+  var object = {
+    hours: hours,
+    minuts: minuts,
+    seconds: seconds
+  };
+  alert("".concat(object.hours, ":").concat(object.minuts, ":").concat(object.seconds));
+}); // 4.8.Написать функцию, которая принимает часы, минуты и секунды и возвращает это время в секундах.
+
+var foreEight = document.getElementById('foreEight').addEventListener('click', function () {
+  var seconds = Number(prompt('Сколько секунд ?', 17));
+}); // 4.9.Написать функцию, которая принимает количество секунд, переводит их в часы, минуты и секунды и возвращает в виде строки «чч:мм:сс».
+
+var foreNine = document.getElementById('foreNine').addEventListener('click', function () {
+  alert('В процессе!');
+}); // 4.10.Написать функцию, которая считает разницу между датами. Функция принимает 6 параметров, которые описывают 2 даты, и возвращает результат в виде строки «чч:мм:сс». При выполнении задания используйте функции из предыдущих 2-х заданий: сначала обе даты переведите в секунды, узнайте разницу в секундах, а потом разницу переведите обратно в «чч:мм:сс»
+
+var foreTenth = document.getElementById('foreTenth').addEventListener('click', function () {
+  alert('В процессе!');
+}); // ========
 },{}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -620,7 +680,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62987" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61277" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
