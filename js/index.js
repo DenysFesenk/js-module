@@ -7,6 +7,9 @@ import {obj} from './objects';
 import {arraysHW} from './arrays'
 import {classesHomeWork} from './classes'
 
+import 'uikit/dist/css/uikit.min.css'
+import '../styles/style.scss'
+
 basicsHW();
 typesHW();
 cyclesWH();
@@ -14,7 +17,3 @@ funcHW();
 obj();
 arraysHW();
 classesHomeWork();
-import 'uikit/dist/css/uikit.min.css'
-import '../styles/style.scss'
-
-
