@@ -6,9 +6,9 @@
   "scripts": {
     "serve": "parcel index.html --open",
     "dev": "parcel index.html --open",
-    "dev:all": "parcel index.html slick.html --open",
+    "dev:all": "parcel index.html slick.html vue-test.html jquery.html --open",
     "start": "parcel index.html  --open",
-    "build": "parcel build index.html slick.html --no-source-maps --no-cache"
+    "build": "parcel build index.html slick.html --no-source-maps vue-test.html jquery.html --no-cache"
   },
   "devDependencies": {
     "cssnano": "^4.1.10",

@@ -117,18 +117,158 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"js/app.js":[function(require,module,exports) {
-$(function () {
-  $('a[href^="#"]').on('click', function (event) {
-    event.preventDefault();
-    var sc = $(this).attr("href"),
-        dn = $(sc).offset().top;
-    $('html, body').animate({
-      scrollTop: dn
-    }, 500);
-  });
+})({"node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+var bundleURL = null;
+
+function getBundleURLCached() {
+  if (!bundleURL) {
+    bundleURL = getBundleURL();
+  }
+
+  return bundleURL;
+}
+
+function getBundleURL() {
+  // Attempt to find the URL of the current script and use that as the base URL
+  try {
+    throw new Error();
+  } catch (err) {
+    var matches = ('' + err.stack).match(/(https?|file|ftp|chrome-extension|moz-extension):\/\/[^)\n]+/g);
+
+    if (matches) {
+      return getBaseURL(matches[0]);
+    }
+  }
+
+  return '/';
+}
+
+function getBaseURL(url) {
+  return ('' + url).replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)\/[^/]+$/, '$1') + '/';
+}
+
+exports.getBundleURL = getBundleURLCached;
+exports.getBaseURL = getBaseURL;
+},{}],"node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
+var bundle = require('./bundle-url');
+
+function updateLink(link) {
+  var newLink = link.cloneNode();
+
+  newLink.onload = function () {
+    link.remove();
+  };
+
+  newLink.href = link.href.split('?')[0] + '?' + Date.now();
+  link.parentNode.insertBefore(newLink, link.nextSibling);
+}
+
+var cssTimeout = null;
+
+function reloadCSS() {
+  if (cssTimeout) {
+    return;
+  }
+
+  cssTimeout = setTimeout(function () {
+    var links = document.querySelectorAll('link[rel="stylesheet"]');
+
+    for (var i = 0; i < links.length; i++) {
+      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
+        updateLink(links[i]);
+      }
+    }
+
+    cssTimeout = null;
+  }, 50);
+}
+
+module.exports = reloadCSS;
+},{"./bundle-url":"node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"node_modules/uikit/dist/css/uikit.min.css":[function(require,module,exports) {
+
+        var reloadCSS = require('_css_loader');
+        module.hot.dispose(reloadCSS);
+        module.hot.accept(reloadCSS);
+      
+},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"styles/style.scss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"js/vue-test.js":[function(require,module,exports) {
+"use strict";
+
+require("uikit/dist/css/uikit.min.css");
+
+require("../styles/style.scss");
+
+Vue.component('todo-item', {
+  props: ['todo'],
+  template: '<li>{{todo.text}}</li>'
 });
-},{}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+var app = new Vue({
+  el: '#app',
+  data: {
+    message: 'Привет, Vue!'
+  }
+});
+var app2 = new Vue({
+  el: '#app-2',
+  data: {
+    message: 'Вы загрузили эту страницу: ' + new Date().toLocaleString()
+  }
+});
+var app3 = new Vue({
+  el: '#app-3',
+  data: {
+    seen: true
+  }
+});
+var app4 = new Vue({
+  el: '#app-4',
+  data: {
+    todos: [{
+      text: 'Изучить JavaScript'
+    }, {
+      text: 'Изучить Vue'
+    }, {
+      text: 'Создать что-нибудь классное'
+    }]
+  }
+});
+var app5 = new Vue({
+  el: '#app-5',
+  data: {
+    message: 'Привет, Vue.js!'
+  },
+  methods: {
+    reverseMessage: function reverseMessage() {
+      this.message = this.message.split('').reverse().join('');
+    }
+  }
+});
+var app6 = new Vue({
+  el: '#app-6',
+  data: {
+    message: 'Hello, Vue!'
+  }
+});
+var app7 = new Vue({
+  el: '#app-7',
+  data: {
+    groceryList: [{
+      id: 0,
+      text: 'Овощи'
+    }, {
+      id: 1,
+      text: 'Сыр'
+    }, {
+      id: 2,
+      text: 'Что там ещё люди едят?'
+    }]
+  }
+});
+},{"uikit/dist/css/uikit.min.css":"node_modules/uikit/dist/css/uikit.min.css","../styles/style.scss":"styles/style.scss"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -332,5 +472,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["node_modules/parcel-bundler/src/builtins/hmr-runtime.js","js/app.js"], null)
-//# sourceMappingURL=/app.c3f9f951.js.map
+},{}]},{},["node_modules/parcel-bundler/src/builtins/hmr-runtime.js","js/vue-test.js"], null)
+//# sourceMappingURL=/vue-test.8b2f8d71.js.map
